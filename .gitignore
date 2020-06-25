@@ -13,6 +13,11 @@ logs
 results
 tmp
 
+
+# transpiled files
+bin
+**/*.js
+
 # Coverage reports
 coverage
 
