@@ -1,0 +1,24 @@
+{
+  "name": "discord.bio",
+  "version": "1.0.0",
+  "description": "The discord.bio server bot.",
+  "main": "dist/app.js",
+  "scripts": {
+    "start": "tsc && node dist/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/discord-bio/bot.git"
+  },
+  "author": "discord.bio",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/discord-bio/bot/issues"
+  },
+  "homepage": "https://github.com/discord-bio/bot#readme",
+  "devDependencies": {
+    "tslint": "^6.1.2",
+    "typescript": "^3.9.5"
+  }
+}
