@@ -1,8 +1,7 @@
 {
   "compilerOptions": {
     "target": "es5",                         
-    "module": "commonjs",                    
-    "declaration": true,                     
+    "module": "commonjs",                                         
     "outDir": "./bin",                         
     "downlevelIteration": true,
     "strict": true,
