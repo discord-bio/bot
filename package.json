@@ -28,5 +28,10 @@
     "eslint-plugin-standard": "^4.0.1",
     "tslint": "^6.1.2",
     "typescript": "^3.9.5"
+  },
+  "dependencies": {
+    "@types/ws": "^7.2.5",
+    "discord.js": "github:discordjs/discord.js#fe7df708e44e0280dfaf0f8e457b154781bb5140",
+    "klasa": "github:dirigeants/klasa#settings"
   }
 }

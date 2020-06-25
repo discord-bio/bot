@@ -13,6 +13,8 @@ logs
 results
 tmp
 
+# config
+config.json
 
 # transpiled files
 bin
