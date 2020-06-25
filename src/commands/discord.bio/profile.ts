@@ -1,4 +1,4 @@
-import { Command, CommandStore, CommandOptions, KlasaClient, KlasaMessage } from 'klasa';
+import { Command, CommandStore, CommandOptions, KlasaMessage } from 'klasa';
 import { DefaultCommandOptions } from '../../constants';
 import DiscordBioClient from '../../client';
 
@@ -12,12 +12,12 @@ export default class extends Command {
     super(store, file, directory, PingCommandOptions);
   }
 
-  public async run (message: KlasaMessage, args: any[]): Promise<KlasaMessage | KlasaMessage[] | null> {
+  public async run (message: KlasaMessage): Promise<KlasaMessage | KlasaMessage[] | null> {
     const discordBioClient = (<DiscordBioClient> message.client).discordBioClient;
+    const searchParam = message.content.split(' ')[1];
     let response;
     try {
-      console.log(args);
-      response = await discordBioClient.fetchUserDetails(args[0]).then(r => r.payload);
+      response = await discordBioClient.fetchUserDetails(searchParam).then(r => r.payload);
     } catch (e) {
       await message.channel.send(e.message);
       return null;

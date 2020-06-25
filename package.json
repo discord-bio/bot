@@ -30,8 +30,9 @@
     "typescript": "^3.9.5"
   },
   "dependencies": {
+    "@types/node-fetch": "^2.5.7",
     "@types/ws": "^7.2.5",
-    "dbiowrap": "^1.0.4",
+    "dbiowrap": "^1.0.7",
     "discord.js": "github:discordjs/discord.js#fe7df708e44e0280dfaf0f8e457b154781bb5140",
     "klasa": "github:dirigeants/klasa#settings"
   }

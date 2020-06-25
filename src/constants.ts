@@ -46,5 +46,5 @@ export const DefaultCommandOptions: CommandOptions = {
   requiredSettings: [],
   subcommands: false,
   usage: '',
-  usageDelim: undefined
+  usageDelim: ' '
 };
