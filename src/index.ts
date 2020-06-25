@@ -1,8 +1,8 @@
-import { Client } from 'klasa';
 import { ClientOptions, DISABLED_STOCK_COMMANDS } from './constants';
 import { token } from '../config.json';
+import DiscordBioClient from './client';
 
-const client = new Client(ClientOptions);
+const client = new DiscordBioClient(ClientOptions);
 
 (async () => {
   await client.login(token).then(() => {

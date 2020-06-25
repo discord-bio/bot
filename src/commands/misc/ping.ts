@@ -11,8 +11,8 @@ export default class extends Command {
     super(store, file, directory, PingCommandOptions);
   }
 
-  public run (message: KlasaMessage): Promise<KlasaMessage | KlasaMessage[] | null> {
+  public async run (message: KlasaMessage): Promise<KlasaMessage | KlasaMessage[] | null> {
     const start = Date.now();
-    return message.channel.send('Pong').then(res => res.edit(`Pong: ${Date.now() - start}ms`));
+    return await message.sendMessage('Pong').then(res => res.edit(`Pong: ${Date.now() - start}ms`));
   }
 }

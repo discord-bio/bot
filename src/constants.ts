@@ -1,6 +1,7 @@
 import { KlasaClientOptions, CommandOptions } from 'klasa';
 
 import config from '../config.json';
+import { ClientOptions as dBioClientOptions } from 'dbiowrap/lib/src/client';
 
 export const COMMAND_MESSAGE_LIFETIME = 30000;
 
@@ -12,6 +13,15 @@ export const ClientOptions: KlasaClientOptions = {
   owners: config.owners,
   commandEditing: true,
   commandMessageLifetime: COMMAND_MESSAGE_LIFETIME
+};
+
+export const dBioWrapClientOptions: dBioClientOptions = {
+  cache: {
+    userProfiles: {
+      expire: 60000,
+      limit: 10
+    }
+  }
 };
 
 export enum CommandRunInTypes {
