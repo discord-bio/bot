@@ -21,14 +21,13 @@ export default class extends Command {
   }
 
   public async run(message: KlasaMessage): Promise<KlasaMessage | KlasaMessage[] | null> {
-    const discordBioClient = (<DiscordBioClient>message.client).discordBioClient;
+    const discordBioClient = (<DiscordBioClient> message.client).discordBioClient;
     const searchParam = message.content.split(' ')[1];
     let response;
     try {
       response = await discordBioClient.fetchUserDetails(searchParam).then((r) => r.payload);
     } catch (e) {
-      await message.channel.send(e.message);
-      return null;
+      return await message.sendMessage(e.message);
     }
     const { user, discord } = response;
     const name = `${discord.username}#${discord.discriminator}`;
