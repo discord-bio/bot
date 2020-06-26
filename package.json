@@ -2,9 +2,9 @@
   "name": "discord.bio",
   "version": "1.0.0",
   "description": "The discord.bio server bot.",
-  "main": "dist/app.js",
+  "main": "bin/src/index.js",
   "scripts": {
-    "start": "tsc && node dist/app.js",
+    "start": "tsc && node bin/src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -34,6 +34,7 @@
     "@types/ws": "^7.2.5",
     "dbiowrap": "^1.0.7",
     "discord.js": "github:discordjs/discord.js#fe7df708e44e0280dfaf0f8e457b154781bb5140",
+    "eslint-config-prettier": "^6.11.0",
     "klasa": "github:dirigeants/klasa#settings"
   }
 }
