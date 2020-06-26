@@ -8,6 +8,8 @@ import { EmbedField } from 'discord.js';
 
 const FIELD_COUNT = 2;
 
+const USER_LIMIT = 10;
+
 const PingCommandOptions: CommandOptions = {
   ...DefaultCommandOptions,
   name: 'top'
@@ -27,7 +29,7 @@ export default class extends Command {
         return await message.sendMessage(e.message);
     }
     const payload = topUsers.payload;
-    const users = payload.map(u => `${u.discord.username} - ${u.user.likes}`);
+    const users = payload.map(u => `${u.discord.username} - ${u.user.likes}`).slice(0, USER_LIMIT + 1);
     const fields: EmbedField[] = [];
     for(let i = 0; i < FIELD_COUNT; i++) {
       const setSize = Math.floor(users.length / FIELD_COUNT);
