@@ -10,14 +10,14 @@ const FIELD_COUNT = 2;
 
 const USER_LIMIT = 10;
 
-const PingCommandOptions: CommandOptions = {
+const ThisCommandOptions: CommandOptions = {
   ...DefaultCommandOptions,
   name: 'top'
 };
 
 export default class extends Command {
   constructor (store: CommandStore, file: string[], directory: string) {
-    super(store, file, directory, PingCommandOptions);
+    super(store, file, directory, ThisCommandOptions);
   }
 
   public async run (message: KlasaMessage): Promise<KlasaMessage | KlasaMessage[] | null> {

@@ -4,7 +4,7 @@ import { MessageEmbed } from 'discord.js';
 import { DefaultCommandOptions } from '../../constants';
 import DiscordBioClient from '../../client';
 
-const ProfileCommandOptions: CommandOptions = {
+const ThisCommandOptions: CommandOptions = {
   ...DefaultCommandOptions,
   name: 'profile',
 };
@@ -17,7 +17,7 @@ enum Gender {
 
 export default class extends Command {
   constructor(store: CommandStore, file: string[], directory: string) {
-    super(store, file, directory, ProfileCommandOptions);
+    super(store, file, directory, ThisCommandOptions);
   }
 
   public async run(message: KlasaMessage): Promise<KlasaMessage | KlasaMessage[] | null> {

@@ -1,14 +1,14 @@
 import { Command, CommandStore, CommandOptions, KlasaClient, KlasaMessage } from 'klasa';
 import { DefaultCommandOptions } from '../../constants';
 
-const PingCommandOptions: CommandOptions = {
+const ThisCommandOptions: CommandOptions = {
   ...DefaultCommandOptions,
   name: 'ping'
 };
 
 export default class extends Command {
   constructor (store: CommandStore, file: string[], directory: string) {
-    super(store, file, directory, PingCommandOptions);
+    super(store, file, directory, ThisCommandOptions);
   }
 
   public async run (message: KlasaMessage): Promise<KlasaMessage | KlasaMessage[] | null> {
