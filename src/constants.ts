@@ -7,7 +7,7 @@ export const COMMAND_MESSAGE_LIFETIME = 30000;
 
 export const DISABLED_STOCK_COMMANDS = ['stats', 'info'];
 
-export const SUGGESTION_CHANNEL_ID = "725762022490374164";
+export const SUGGESTION_CHANNEL_ID = "661333033655468033";
 
 export const ClientOptions: KlasaClientOptions = {
   prefix: config.prefix,

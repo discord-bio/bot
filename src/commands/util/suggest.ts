@@ -21,7 +21,13 @@ export default class extends Command {
         const suggestionChannel = message.client.channels.get(SUGGESTION_CHANNEL_ID);
         if(!suggestionChannel) throw new Error('No channel found');
         return (<KlasaMessage> <unknown> (<TextChannel> suggestionChannel).send('', { embed: {
-            description: `Suggestion: ${suggestion}`
+            author: {
+              name: message.author.username,
+              iconURL: message.author.avatarURL() || undefined
+            },
+            color: 0xFFFF00,
+            description: `Suggestion: ${suggestion}`,
+            timestamp: new Date()
         }}));
     }
   }
