@@ -58,7 +58,7 @@ export default class extends Command {
       user.details.birthday ? moment(new Date(user.details.birthday)).format('MMM Do YYYY') : 'No birthday',
       true,
     );
-    embed.addField('🚻 Gender', user.details.gender ? Gender[user.details.gender] : 'No gender', true);
+    embed.addField('🚻 Gender', user.details.gender !== null ? Gender[user.details.gender] : 'No gender', true);
     embed.addField('✉️ Mail', user.details.email || 'No email', true);
     embed.addField('🛠️ Occupation', user.details.occupation || 'No occupation', true);
     embed.addField(
