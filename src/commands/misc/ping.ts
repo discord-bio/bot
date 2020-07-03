@@ -3,16 +3,16 @@ import { DefaultCommandOptions } from '../../constants';
 
 const ThisCommandOptions: CommandOptions = {
   ...DefaultCommandOptions,
-  name: 'ping'
+  name: 'ping',
 };
 
 export default class extends Command {
-  constructor (store: CommandStore, file: string[], directory: string) {
+  constructor(store: CommandStore, file: string[], directory: string) {
     super(store, file, directory, ThisCommandOptions);
   }
 
-  public async run (message: KlasaMessage): Promise<KlasaMessage | KlasaMessage[] | null> {
+  public async run(message: KlasaMessage): Promise<KlasaMessage | KlasaMessage[] | null> {
     const start = Date.now();
-    return await message.sendMessage('Pong').then(res => res.edit(`Pong: ${Date.now() - start}ms`));
+    return await message.sendMessage('🏓 Ping...').then((res) => res.edit(`📡 Pong: ${Date.now() - start}ms`));
   }
 }
