@@ -3,6 +3,7 @@ import { Command, CommandStore, CommandOptions, KlasaMessage, KlasaUser } from '
 import { MessageEmbed } from 'discord.js';
 import { DefaultCommandOptions } from '../../constants';
 import DiscordBioClient from '../../client';
+import moment from 'moment';
 
 const ThisCommandOptions: CommandOptions = {
   ...DefaultCommandOptions,
@@ -52,11 +53,19 @@ export default class extends Command {
     );
     embed.addField('🆔 User ID', discord.id);
     embed.addField('🗺️ Location', user.details.location || 'No location', true);
-    embed.addField('🎂 Birthday', user.details.birthday ? new Date(user.details.birthday) : 'No birthday', true);
+    embed.addField(
+      '🎂 Birthday',
+      user.details.birthday ? moment(new Date(user.details.birthday)).format('MMM Do YYYY') : 'No birthday',
+      true,
+    );
     embed.addField('🚻 Gender', user.details.gender ? Gender[user.details.gender] : 'No gender', true);
     embed.addField('✉️ Mail', user.details.email || 'No email', true);
     embed.addField('🛠️ Occupation', user.details.occupation || 'No occupation', true);
-    embed.addField('🗓️ Account Created', user.details.created_at || 'No creation date.', true);
+    embed.addField(
+      '🗓️ Account Created',
+      moment(user.details.created_at).format('MMMM Do YYYY, h:mm:ss a') || 'No creation date.',
+      true,
+    );
 
     return message.send(embed);
   }
