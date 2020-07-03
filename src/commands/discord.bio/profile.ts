@@ -7,6 +7,7 @@ import DiscordBioClient from '../../client';
 const ThisCommandOptions: CommandOptions = {
   ...DefaultCommandOptions,
   name: 'profile',
+  aliases: ['p'],
 };
 
 enum Gender {
@@ -21,8 +22,8 @@ export default class extends Command {
   }
 
   public async run(message: KlasaMessage): Promise<KlasaMessage | KlasaMessage[] | null> {
-    const discordBioClient = (<DiscordBioClient> message.client).discordBioClient;
-    const searchParam = message.content.split(' ')[1];
+    const discordBioClient = (<DiscordBioClient>message.client).discordBioClient;
+    const searchParam = message.content.split(' ')[1].replace(/[\\<>@#&!]/g, '');
     let response;
     try {
       response = await discordBioClient.fetchUserDetails(searchParam).then((r) => r.payload);
@@ -42,7 +43,7 @@ export default class extends Command {
     if (avatar) embed.setThumbnail(avatar);
     embed.setTitle(`${name} \`(${user.details.slug})\``);
     embed.setDescription(
-      `🗒️**About:** ${user.details.description}\n​❤️ **${user.details.likes} like${
+      `🗒️**About:** ${user.details.description || 'No about set.'}\n​❤️ **${user.details.likes} like${
         user.details.likes !== 1 ? 's' : ''
       }**\n​`,
     );
