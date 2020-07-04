@@ -4,7 +4,7 @@ import { DefaultCommandOptions } from '../../constants';
 import { TopLikes } from 'dbiowrap/lib/src/types';
 
 import DiscordBioClient from '../../client';
-import { EmbedField } from 'discord.js';
+import { MessageEmbed } from 'discord.js';
 
 const FIELD_COUNT = 2;
 
@@ -12,36 +12,33 @@ const USER_LIMIT = 10;
 
 const ThisCommandOptions: CommandOptions = {
   ...DefaultCommandOptions,
-  name: 'top'
+  name: 'top',
 };
 
 export default class extends Command {
-  constructor (store: CommandStore, file: string[], directory: string) {
+  constructor(store: CommandStore, file: string[], directory: string) {
     super(store, file, directory, ThisCommandOptions);
   }
 
-  public async run (message: KlasaMessage): Promise<KlasaMessage | KlasaMessage[] | null> {
-    const discordBioClient = (<DiscordBioClient> message.client).discordBioClient;
+  public async run(message: KlasaMessage): Promise<KlasaMessage | KlasaMessage[] | null> {
+    const discordBioClient = (<DiscordBioClient>message.client).discordBioClient;
     let topUsers: TopLikes.Response;
     try {
-        topUsers = await discordBioClient.fetchTopUsers();
-    } catch(e) {
-        return await message.sendMessage(e.message);
+      topUsers = await discordBioClient.fetchTopUsers();
+    } catch (e) {
+      return await message.sendMessage(e.message);
     }
     const payload = topUsers.payload;
-    const users = payload.map(u => `${u.discord.username} - ${u.user.likes}`).slice(0, USER_LIMIT + 1);
-    const fields: EmbedField[] = [];
-    for(let i = 0; i < FIELD_COUNT; i++) {
-      const setSize = Math.floor(users.length / FIELD_COUNT);
-      const fieldUsers = users.slice(i * setSize, (i * setSize) + setSize);
-      fields.push({
-        name: `Username - Likes (${(i + 1)})`,
-        value: fieldUsers.join('\n'),
-        inline: true
-      });
-    }
-    return await message.sendMessage('', { embed: {
-      fields
-    }});
+    const users: typeof payload = payload.filter((i, index) => index < 10);
+
+    const embed = new MessageEmbed().setTitle('❤️ **Top Likes**');
+    users.forEach((obj, index) => {
+      embed.addField(
+        `**[${index + 1}]** ${obj.discord.username}#${obj.discord.discriminator}`,
+        `${obj.user.likes} likes`,
+      );
+    });
+
+    return await message.sendMessage(embed);
   }
 }
