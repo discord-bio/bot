@@ -14,6 +14,7 @@ export default class extends Command {
   }
 
   public async run (message: KlasaMessage): Promise<KlasaMessage | KlasaMessage[] | null> {
+    if(!message.member?.permissions.has('ADMINISTRATOR')) return null;
     const msg = await message.sendMessage('Pulling from Git');
     execSync('git pull');
     await msg.edit('Transpiling');

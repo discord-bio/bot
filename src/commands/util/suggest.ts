@@ -26,7 +26,14 @@ export default class extends Command {
               iconURL: message.author.avatarURL() || undefined
             },
             color: 0xFFFF00,
-            description: `Suggestion: ${suggestion}`,
+            description: `**Suggestion**\n${suggestion}`,
+            fields: [
+              {
+                name: '**Status**',
+                value: 'Pending',
+                inline: false
+              }
+            ],
             timestamp: new Date()
         }}));
     }
