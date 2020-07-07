@@ -45,6 +45,7 @@ export default class extends Command {
     embed.setColor('PURPLE');
     embed.setAuthor(name, avatar || undefined, url);
     if (avatar) embed.setThumbnail(avatar);
+    if (user.details.banner) embed.setImage(user.details.banner);
     embed.setTitle(`${name} \`(${user.details.slug})\``);
     embed.setDescription(
       `🗒️**About:** ${user.details.description || 'No about set.'}\n​❤️ **${user.details.likes} like${
