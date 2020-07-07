@@ -14,7 +14,8 @@ export default class extends Command {
     super(store, file, directory, ThisCommandOptions);
   }
 
-  public async run(message: KlasaMessage): Promise<KlasaMessage | KlasaMessage[] | null> {
+  public async run (message: KlasaMessage): Promise<KlasaMessage | KlasaMessage[] | null> {
+    if(!message.member?.permissions.has('ADMINISTRATOR')) return null;
     const msg = await message.sendMessage('<:github:669562305176141831> **Pulling from Git**');
     execSync('git pull');
     await msg.edit('<:ts:728674877829152889> **Transpiling**');

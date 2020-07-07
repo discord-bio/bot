@@ -17,20 +17,25 @@ export default class extends Command {
     if (!content) {
       return message.sendMessage('No suggestion provided.');
     } else {
-      const suggestion = content.split(' ').slice(1);
-      const suggestionChannel = message.client.channels.get(SUGGESTION_CHANNEL_ID);
-      if (!suggestionChannel) throw new Error('No channel found.');
-      return <KlasaMessage>(<unknown>(<TextChannel>suggestionChannel).send('', {
-        embed: {
-          author: {
-            name: message.author.username,
-            iconURL: message.author.avatarURL() || undefined,
-          },
-          color: 0xffff00,
-          description: `Suggestion: ${suggestion}`,
-          timestamp: new Date(),
-        },
-      }));
+        const suggestion = content.split(' ').slice(1).join(" ")
+        const suggestionChannel = message.client.channels.get(SUGGESTION_CHANNEL_ID);
+        if(!suggestionChannel) throw new Error('No channel found');
+        return (<KlasaMessage> <unknown> (<TextChannel> suggestionChannel).send('', { embed: {
+            author: {
+              name: message.author.username,
+              iconURL: message.author.avatarURL() || undefined
+            },
+            color: 0xFFFF00,
+            description: `**Suggestion**\n${suggestion}`,
+            fields: [
+              {
+                name: '**Status**',
+                value: 'Pending',
+                inline: false
+              }
+            ],
+            timestamp: new Date()
+        }}));
     }
   }
 }
