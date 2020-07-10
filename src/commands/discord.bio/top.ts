@@ -28,7 +28,7 @@ export default class extends Command {
     } catch (e) {
       return await message.sendMessage(e.message);
     }
-    const payload = topUsers.payload;
+    const payload = topUsers.payload.users;
     const users: typeof payload = payload.filter((i, index) => index < 10);
 
     const embed = new MessageEmbed().setTitle('❤️ **Top Likes**');
