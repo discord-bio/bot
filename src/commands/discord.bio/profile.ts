@@ -30,7 +30,7 @@ export default class extends Command {
     const discordBioClient = (<DiscordBioClient>message.client).discordBioClient;
     let response;
     try {
-      response = await discordBioClient.fetchUserDetails(profile).then((r) => r.payload);
+      response = await discordBioClient.rest.fetchUserDetails(profile).then((r) => r.payload);
     } catch (e) {
       return await message.sendMessage(e.message);
     }
