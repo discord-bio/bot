@@ -24,7 +24,7 @@ export default class extends Command {
     const discordBioClient = (<DiscordBioClient>message.client).discordBioClient;
     let topUsers: TopLikes.Response;
     try {
-      topUsers = await discordBioClient.fetchTopUsers();
+      topUsers = await discordBioClient.rest.fetchTopUsers();
     } catch (e) {
       return await message.sendMessage(e.message);
     }
