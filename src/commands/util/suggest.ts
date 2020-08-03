@@ -17,7 +17,7 @@ export default class extends Command {
     if (!content) {
       return message.sendMessage('No suggestion provided.');
     } else {
-        const suggestion = content.split(' ').slice(1).join(" ")
+        const suggestion = content.split(' ').slice(1).join(" ");
         const suggestionChannel = message.client.channels.get(SUGGESTION_CHANNEL_ID);
         if(!suggestionChannel) throw new Error('No channel found');
         return (<KlasaMessage> <unknown> (<TextChannel> suggestionChannel).send('', { embed: {

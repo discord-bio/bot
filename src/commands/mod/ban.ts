@@ -23,6 +23,7 @@ export default class extends Command {
   public async run(message: KlasaMessage): Promise<KlasaMessage | KlasaMessage[] | null> {
     if (!message.member?.roles.has(MOD_ROLE) && !message.member?.permissions.has('BAN_MEMBERS')) return null;
     const memberId = message.content.split(' ')[1];
+    // eslint-disable-next-line no-useless-escape
     const member = message.guild?.members.get(memberId.replace(/[<|>|\@|\!]/g, ''));
     if (!member) return await message.sendMessage('Member not found');
     const reason = message.content.split(' ').slice(2).join(' ');
