@@ -1,14 +1,12 @@
 import { Command, CommandStore, CommandOptions, KlasaClient, KlasaMessage } from 'klasa';
 import { DefaultCommandOptions } from '../../constants';
 
-import { TopLikes } from 'dbiowrap/lib/src/types';
+import { TopLikes } from 'dbiowrap/lib/rest/types';
 
-import DiscordBioClient from '../../client';
 import { MessageEmbed } from 'discord.js';
 
-const FIELD_COUNT = 2;
-
-const USER_LIMIT = 10;
+import DiscordBioClient from '../../client';
+import { RestClient } from 'dbiowrap/lib/rest/restclient';
 
 const ThisCommandOptions: CommandOptions = {
   ...DefaultCommandOptions,
@@ -24,7 +22,7 @@ export default class extends Command {
     const discordBioClient = (<DiscordBioClient>message.client).discordBioClient;
     let topUsers: TopLikes.Response;
     try {
-      topUsers = await discordBioClient.rest.fetchTopUsers();
+      topUsers = await (<RestClient> discordBioClient.rest).fetchTopUsers();
     } catch (e) {
       return await message.sendMessage(e.message);
     }

@@ -27,13 +27,14 @@ export default class extends Command {
     if (!profile) profile = message.author.id;
     profile = profile.replace(/[\\<>@#&!]/g, '');
 
-    const discordBioClient = (<DiscordBioClient>message.client).discordBioClient;
+    const discordBioClient = (<DiscordBioClient> message.client).discordBioClient;
     let response;
     try {
-      response = await discordBioClient.rest.fetchUserDetails(profile).then((r) => r.payload);
+      response = await discordBioClient.rest?.fetchUserDetails(profile).then((r) => r.payload);
     } catch (e) {
       return await message.sendMessage(e.message);
     }
+    if(!response) return message.sendMessage('User not found');
     const { user, discord } = response;
     const name = `${discord.username}#${discord.discriminator}`;
     const url = `https://discord.bio/p/${user.details.slug}`;

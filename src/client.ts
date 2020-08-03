@@ -1,6 +1,6 @@
 import { Client as KlasaClient, KlasaClientOptions } from 'klasa';
 
-import { Client as DBioWrapClient } from 'dbiowrap/lib/src/client';
+import { Client as DBioWrapClient } from 'dbiowrap/lib/client';
 import { dBioWrapClientOptions } from './constants';
 
 export default class DiscordBioClient extends KlasaClient {
