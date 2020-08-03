@@ -14,7 +14,6 @@ export default class DiscordBioClient extends KlasaClient {
     super(options);
     this.discordBioClient = new DBioWrapClient(dBioWrapClientOptions);
     this.on('guildCreate', this._onJoin.bind(this));
-    this.on('ready', () => { this._onJoin(<Guild> this.guilds.get('541033778655526912')); });
   }
 
   _onJoin(guild: Guild) {
