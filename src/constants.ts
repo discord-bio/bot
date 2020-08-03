@@ -1,7 +1,7 @@
 import { KlasaClientOptions, CommandOptions } from 'klasa';
 
 import config from '../config.json';
-import { ClientOptions as dBioClientOptions } from 'dbiowrap/lib/src/client';
+import { ClientOptions as dBioClientOptions } from 'dbiowrap/lib/client';
 
 export const COMMAND_MESSAGE_LIFETIME = 30000;
 
