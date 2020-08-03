@@ -10,6 +10,7 @@ const ThisCommandOptions: CommandOptions = {
   name: 'profile',
   aliases: ['p', 'bio'],
   usage: '[profile:string]',
+  description: 'Fetch a user\'s profile by ID or slug'
 };
 
 enum Gender {
@@ -19,6 +20,8 @@ enum Gender {
 }
 
 export default class extends Command {
+  public officialGuildOnly = false;
+
   constructor(store: CommandStore, file: string[], directory: string) {
     super(store, file, directory, ThisCommandOptions);
   }

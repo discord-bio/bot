@@ -1,18 +1,22 @@
 import { Command, CommandStore, CommandOptions, KlasaMessage } from 'klasa';
-import { DefaultCommandOptions, SUGGESTION_CHANNEL_ID } from '../../constants';
+import { DefaultCommandOptions, SUGGESTION_CHANNEL_ID, DBIO_GUILD } from '../../constants';
 import { TextChannel } from 'discord.js';
 
 const ThisCommandOptions: CommandOptions = {
   ...DefaultCommandOptions,
   name: 'suggest',
+  description: 'Suggest a feature for discord.bio (discord.bio server exclusive)'
 };
 
 export default class extends Command {
+  public officialGuildOnly = true;
+
   constructor(store: CommandStore, file: string[], directory: string) {
     super(store, file, directory, ThisCommandOptions);
   }
 
   public async run(message: KlasaMessage): Promise<KlasaMessage | KlasaMessage[] | null> {
+    if(message.guild?.id !== DBIO_GUILD) return null;
     const content = message.content;
     if (!content) {
       return message.sendMessage('No suggestion provided.');
@@ -28,13 +32,9 @@ export default class extends Command {
             },
             color: 0xFFFF00,
             description: `**Suggestion**\n${suggestion}`,
-            fields: [
-              {
-                name: '**Status**',
-                value: 'Pending',
-                inline: false
-              }
-            ],
+            thumbnail: {
+              url: 'https://cdn.discordapp.com/avatars/660184868772249610/cb8f1853728403ef77590cd967d3b4c4.webp'
+            },
             timestamp: new Date()
         }}).then(() => {
           message.sendMessage('<:dBoxCheck:707177937966989353> Your suggestion was submitted.');

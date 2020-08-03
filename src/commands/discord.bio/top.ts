@@ -11,9 +11,12 @@ import { RestClient } from 'dbiowrap/lib/rest/restclient';
 const ThisCommandOptions: CommandOptions = {
   ...DefaultCommandOptions,
   name: 'top',
+  description: 'Fetch users with the most likes on discord.bio'
 };
 
 export default class extends Command {
+  public officialGuildOnly = false;
+
   constructor(store: CommandStore, file: string[], directory: string) {
     super(store, file, directory, ThisCommandOptions);
   }
@@ -29,7 +32,7 @@ export default class extends Command {
     const payload = topUsers.payload.users;
     const users: typeof payload = payload.filter((i, index) => index < 10);
 
-    const embed = new MessageEmbed().setTitle('❤️ **Top Likes**');
+    const embed = new MessageEmbed().setTitle('❤️ **Top Likes**').setColor(0xff0000);
     users.forEach((obj, index) => {
       embed.addField(
         `**[${index + 1}]** ${obj.discord.username}#${obj.discord.discriminator}`,

@@ -1,5 +1,5 @@
 import { Command, CommandStore, CommandOptions, KlasaClient, KlasaMessage } from 'klasa';
-import { DefaultCommandOptions } from '../../constants';
+import { DefaultCommandOptions, DBIO_GUILD } from '../../constants';
 
 const MOD_ROLE = '661332732168765440';
 
@@ -10,9 +10,11 @@ const BAN_LIMIT = 50;
 const ThisCommandOptions: CommandOptions = {
   ...DefaultCommandOptions,
   name: 'ban',
+  description: 'Ban a member (discord.bio server exclusive)'
 };
 
 export default class extends Command {
+  public officialGuildOnly = true;
   private usesThisInterval = 0;
   private intervalReset = Date.now();
 
@@ -21,6 +23,7 @@ export default class extends Command {
   }
 
   public async run(message: KlasaMessage): Promise<KlasaMessage | KlasaMessage[] | null> {
+    if(message.guild?.id !== DBIO_GUILD) return null;
     if (!message.member?.roles.has(MOD_ROLE) && !message.member?.permissions.has('BAN_MEMBERS')) return null;
     const memberId = message.content.split(' ')[1];
     // eslint-disable-next-line no-useless-escape

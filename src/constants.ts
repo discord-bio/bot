@@ -9,6 +9,8 @@ export const DISABLED_STOCK_COMMANDS = ['stats', 'info'];
 
 export const SUGGESTION_CHANNEL_ID = "661333033655468033";
 
+export const DBIO_GUILD = "661331961188712459";
+
 export const ClientOptions: KlasaClientOptions = {
   prefix: config.prefix,
   fetchAllMembers: false,
@@ -48,5 +50,5 @@ export const DefaultCommandOptions: CommandOptions = {
   requiredSettings: [],
   subcommands: false,
   usage: '',
-  usageDelim: ' '
+  usageDelim: ' ',
 };
