@@ -6,6 +6,7 @@ import { owners } from '../../../config.json';
 const ThisCommandOptions: CommandOptions = {
   ...DefaultCommandOptions,
   name: 'update',
+  cooldown: 0
 };
 
 export default class extends Command {
