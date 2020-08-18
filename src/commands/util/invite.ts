@@ -1,5 +1,5 @@
 import { Command, CommandStore, CommandOptions, KlasaClient, KlasaMessage } from 'klasa';
-import { DefaultCommandOptions } from '../../constants';
+import { DefaultCommandOptions, BOT_INVITE } from '../../constants';
 
 const ThisCommandOptions: CommandOptions = {
   ...DefaultCommandOptions,
@@ -15,6 +15,6 @@ export default class extends Command {
   }
 
   public async run(message: KlasaMessage): Promise<KlasaMessage | KlasaMessage[] | null> {
-    return message.sendMessage('Invite the bot with this link: <https://discord.com/api/oauth2/authorize?client_id=660184868772249610&permissions=8&scope=bot>');
+    return message.sendMessage(`Invite the bot with this link: <${BOT_INVITE}>`);
   }
 }

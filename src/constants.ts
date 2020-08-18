@@ -52,3 +52,9 @@ export const DefaultCommandOptions: CommandOptions = {
   usage: '',
   usageDelim: ' ',
 };
+
+
+export const API_URL = 'https://api.discord.bio/';
+export const SITE_URL = 'https://discord.bio/';
+export const DISCORD_SERVER_INVITE = 'https://discord.gg/bWSxwz8';
+export const BOT_INVITE = 'https://discord.com/api/oauth2/authorize?client_id=660184868772249610&permissions=8&scope=bot';
