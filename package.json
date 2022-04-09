@@ -36,6 +36,6 @@
     "discord.js": "github:discordjs/discord.js#fe7df708e44e0280dfaf0f8e457b154781bb5140",
     "eslint-config-prettier": "^6.11.0",
     "klasa": "github:dirigeants/klasa#settings",
-    "moment": "^2.27.0"
+    "moment": "^2.29.2"
   }
 }
